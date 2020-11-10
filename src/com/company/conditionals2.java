@@ -71,10 +71,15 @@ public class conditionals2 {
 
     public static boolean makeBench(int small, int big, int goal)
     {
-        if (small + big*5 == goal)
-            return true;
-        else
+        int g1 = goal%5;             //amount of small benches needed
+        int g5 = (goal-g1)/5;        //amount of large benches needed
+
+        if (small<g1)                //case in which there are less smalls given than needed
             return false;
+        else if (big<g5)             //case in which there are less larges given than needed
+            return (big*5 + small >= goal);         //returns if there are enough smalls to compensate
+        else                         //this case is only reached if there are enough smalls and larges given
+            return true;
     }
 
     public static void main(String[] args)
